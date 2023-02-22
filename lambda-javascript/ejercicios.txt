@@ -1,0 +1,54 @@
+// Idiot
+I = a => a;
+// result = I;
+//result = I(1);
+
+// Mockingbird
+M = f => f(f);
+// PELIGRO: No ejecutar!
+
+// Kestrel
+K = a => b => a;
+/* K = function(a) {
+  return function(b) {
+    return a;
+  }
+} */
+// result = K(1)(2);
+
+// Kite
+KI = a => b => b;
+// result = KI(1)(2);
+
+// Cardinal
+C = f => a => b => f(b)(a);
+//result = C(1)(2);
+//result = C(K)(1)(2);
+
+// TRUE
+T = K;
+T.inspect = 'T / K';
+//result = T;
+
+// FALSE
+F = KI;
+F.inspect = 'F / KI';
+//result = F;
+
+// NOT
+not = p => p(F)(T);
+//result = not(F);
+
+// AND
+and = p => q => p(q)(p);
+// result = and(F)(F);
+
+// OR
+or = p => q => p(p)(q)
+//result = or(F)(F);
+
+// BOOLEAN EQUALITY
+beq = p => q => p(q)(not(p))
+//result = beq(F)(F);
+
+console.log(result);
